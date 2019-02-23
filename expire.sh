@@ -26,8 +26,7 @@ new_docs_count () {
 ####
 
 
-DEL_COUNT=`expr new_docs_count / 2`
-
+DEL_COUNT=$(expr $(new_docs_count) / 2)
 echo ${DEL_COUNT}
 
 exit
