@@ -37,11 +37,6 @@ curl -s -X POST 'http://'${HOST}':9200/'${INDEX}'/_delete_by_query?size='${DEL_C
   "conflicts": "proceed",
   "query": {
     "function_score": {
-      "query": {
-        "range": {
-          "@timestamp": { "lt": "'${WEEK_AGO}'T00:00:00-06:00" }
-        }
-      },
       "random_score": {
         "seed": "'${RND}'"
       }
@@ -50,4 +45,12 @@ curl -s -X POST 'http://'${HOST}':9200/'${INDEX}'/_delete_by_query?size='${DEL_C
 }'
 
 
+curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
+sleep 1
+curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
+sleep 1
+curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
+sleep 1
+curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
+sleep 1
 curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
