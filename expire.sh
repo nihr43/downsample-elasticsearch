@@ -2,6 +2,8 @@
 #
 ## gradually expires time series metrics in elasticsearch
 
+hash jq curl || exit 1
+
 INDEX="$1"
 RND="`dd if=/dev/random bs=16 count=1 | md5`"
 HOST="10.0.0.32"
@@ -25,11 +27,8 @@ new_docs_count () {
 
 ####
 
-
+# expire half the number of documents created this week, allowing the db to grow
 DEL_COUNT=$(expr $(new_docs_count) / 2)
-echo ${DEL_COUNT}
-
-exit
 
 curl -s -X POST 'http://'${HOST}':9200/'${INDEX}'/_delete_by_query?size='${DEL_COUNT}'&wait_for_completion=false' -H 'Content-Type: application/json' -d '
 {
