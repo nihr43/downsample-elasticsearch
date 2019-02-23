@@ -45,12 +45,5 @@ curl -s -X POST 'http://'${HOST}':9200/'${INDEX}'/_delete_by_query?size='${DEL_C
 }'
 
 
-curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
-sleep 1
-curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
-sleep 1
-curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
-sleep 1
-curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
 sleep 1
 curl -s -X GET "${HOST}:9200/_tasks?detailed=true&actions=*/delete/byquery" | jq
