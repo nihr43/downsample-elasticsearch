@@ -4,7 +4,7 @@
 
 hash jq curl || exit 1
 
-[ "$1" == "" ] $$ exit 1
+[ "$1" == "" ] && exit 1
 
 INDEX="$1"
 RND="`dd if=/dev/random bs=16 count=1 | md5`"
