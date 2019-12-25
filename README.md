@@ -1,4 +1,4 @@
-# expire-elasticsearch
+# downsample-elasticsearch
 
 Gradually expire time-series data in elasticsearch, similar to influxdb downsampling.
 
